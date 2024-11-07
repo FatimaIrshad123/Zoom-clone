@@ -10,7 +10,7 @@ import MeetingCard from './MeetingCard';
 import { useToast } from '@/hooks/use-toast';
 
 const CallList = ({type}: {type: 'ended' | 'upcoming' | 'recordings'}) => {
-    const {endedCalls, upcomingCalls, callRecordings, isLoading} = useGetCalls();
+    const {endedCalls, upcomingCalls, callRecordings} = useGetCalls();
     const router = useRouter();
     const [recordings, setRecordings] = useState<CallRecording[]>([])
     const {toast} = useToast();
@@ -52,12 +52,13 @@ const CallList = ({type}: {type: 'ended' | 'upcoming' | 'recordings'}) => {
     
                setRecordings(recordings);
             }catch(error){
+                console.log(error)
                 toast({title: 'Try again later'})
             }
             
         }
         if (type === 'recordings') fetchRecordings();
-    },[type,callRecordings])
+    },[type,callRecordings,toast])
 
     const calls = getCalls();
     const noCallMessage = getNoCallsMessage();
