@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { avatarImages } from "@/constants";
@@ -69,10 +68,8 @@ const MeetingCard = ({
             <Button
               onClick={() => {
                 navigator.clipboard.writeText(link);
-                toast({
-                  title: "Link Copied",
-                });
-              }}
+                toast({title: "Link Copied"});
+              }} 
               className="bg-dark-4 px-6"
             >
               <Image
